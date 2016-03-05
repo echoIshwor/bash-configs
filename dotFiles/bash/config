@@ -1,0 +1,108 @@
+			# Prompt
+			# Shell settings
+
+
+
+
+			       
+		    #  SMALL PIECE OF CODE 
+
+			   # greeting
+
+		  # get current hour (24 clock format i.e. 0-23)
+
+		 hour=$(date +"%H")
+
+		 # if it is midnight to midafternoon will say G'morning
+		 if [ $hour -ge 0 -a $hour -lt 12 ]
+		 then
+		  # greet="Good Morning, Ishwor. Welcome back."
+		   fortune | cowsay -f tux
+
+
+		 # if it is midafternoon to evening ( before 6 pm) will say G'noon
+		 elif [ $hour -ge 12 -a $hour -lt 18 ]
+		 then
+		  # greet="Good Afternoon, ISHWOR. Welcome back. "
+		 
+		    fortune | cowsay -f stimpy
+
+		 else    
+		 # it is good evening till midnight
+		 # greet="Good Evening, ISHWOR. Welcome back."
+
+			    fortune | cowsay -f tux
+		 fi
+
+		 
+
+		   # holiday greeting . Ishwor you need to add some more events here 
+
+		 # get current day (Month-Day Format)
+		 day=$(date +"%B%e")
+
+		 # get current year (for new years greeting)
+		 year=$(date +"%Y")
+
+		 # make sure the holiday greeting is displayed (if any)
+		 hol=1
+
+		 # if it is New Year's Day
+		 if [ "$day" = "January1" ]
+		 then
+		   holgreet="Happy New Years. Have a Happy $year."
+
+		 # if it is Groundhog Day
+		 elif [ "$day" = "February2" ]
+		 then
+		   holgreet="Spring season is just around the corner $USER."
+
+		 # if it is Valentine's Day
+		 elif [ "$day" = "February14" ]
+		 then
+		   holgreet="Have a Happy Valentine's Day."
+
+		 # if it is April fool Day
+		 elif [ "$day" = "april1" ]
+		 then
+		   holgreet="Dude it's a APRIL FOOL DAY today  beware."
+
+		 # if it is my birthday
+		 elif [ "$day" = "february28" ]
+		 then
+		   holgreet="Have a Happy Birthday $USER."
+
+		 # if it is Halloween
+		 elif [ "$day" = "October31" ]
+		 then
+		   holgreet="Happy Halloween.Time for some horror movies $USER"
+
+		 # if it is Christmas Eve
+		 elif [ "$day" = "December24" ]
+		 then
+		   holgreet="Merry Christmas Eve."
+
+		 # if it is Christmas
+		 elif [ "$day" = "December25" ]
+		 then
+		   holgreet="Merry Christmas."
+
+		 # if it is New Year's Eve
+		 elif [ "$day" = "December31" ]
+		 then
+		   holgreet="Happy New Year's Eve."
+		 else
+		   hol=0
+		 fi
+
+		 # display holiday greeting
+		 if [ "$hol" = "1" ]
+		 then
+		 echo $holgreet 
+
+		 elif [ "$hol" = "0" ]
+		 then
+		   randomvarthatsomehowimportant=0
+		 fi
+
+

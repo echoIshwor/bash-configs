@@ -1,0 +1,17 @@
+              # Loaded for logins and scripts.
+
+              # Run Scripts
+
+           
+      . ~/.bin/dotFiles/bash/env
+     
+      . ~/.bin/dotFiles/bash/config
+
+      . ~/.bin/dotFiles/bash/aliases
+
+      . ~/.bin/dotFiles/bash/prompt
+
+      . ~/.bin/dotFiles/bash/function
+
+      . ~/.bin/dotFiles/bash/paliases
+

@@ -1,0 +1,123 @@
+            # Shortcut commands
+            # Function with arguments
+                     
+                                         
+				 # SOME FREQUENTLY USED ALIASES: 
+				 alias google='firefox google.com &'                             # This will open Google in Firefox Browser
+				 alias crash='sudo poweroff'                                     # Turn off The computer
+				 alias onresume='sudo reboot'
+				 alias fb='firefox fb.com &'                                     # This will open FaceBook on the firefox
+				 alias tplink='firefox 192.168.0.1 &'                                # open the router login page
+				 alias close="gnome-screensaver-command --lock &"                # lock the current running session
+				 # alias ls='ls -hF --color'                                      # add colors for filetype recognition
+				 alias youtube='firefox youtube.com/html5 &'
+				 alias ro='sudo su'
+                                 alias tlp='sudo tlp start'
+                                 alias xx='exit'
+                                 alias ptop='sudo powertop'
+                                 alias subisu='firefox 1.254.254.254 &' 
+                                 alias ghub='firefox https://github.com/echoIshwor &'
+                          	 alias tor='tor-browser-en.sh &'       
+                                
+                                 
+                                  # DOWNLOAD SUBTITLE FOR ANY MOVIES.
+                                  alias subtitle='firefox http://subscene.com/subtitles &'
+       
+                                 #SWITCH TO TERMINAL SHORT CUTS
+                                  alias tone='sudo chvt 1'                                
+                                  alias ttwo='sudo chvt 2'
+                                  alias tthree='sudo chvt 3'
+                                  alias tfour='sudo chvt 4'
+                                  alias tfive='sudo chvt 5'
+                                  alias tsix='sudo chvt 6'
+                                  alias tseven='sudo chvt 7'
+
+			       
+				 # SHORT CUTS TO DOT FILES.
+				alias en='sudo vi ~/.bin/dotFiles/bash/env'
+				alias fun='sudo vi ~/.bin/dotFiles/bash/function'
+				alias con='sudo vi ~/.bin/dotFiles/bash/config'
+				alias rc='sudo vi ~/.bin/dotFiles/bash/custom_bashRC'
+				alias al='sudo vi ~/.bin/dotFiles/bash/aliases'
+				alias pr='sudo vi ~/.bin/dotFiles/bash/prompt'
+
+
+			  # Alias xterm and aterm
+			  alias term='xterm -bg AntiqueWhite -fg Black &'
+			  alias termb='xterm -bg AntiqueWhite -fg NavyBlue &'
+			  alias termg='xterm -bg AntiqueWhite -fg OliveDrab &'
+			  alias termr='xterm -bg AntiqueWhite -fg DarkRed &'
+			  alias aterm='aterm -ls -fg gray -bg black'
+			  alias xtop='xterm -fn 6x13 -bg LightSlateGray -fg black -e top &'
+			  alias xsu='xterm -fn 7x14 -bg DarkOrange4 -fg white -e su &'
+			
+			 
+		             	# BACK-UP DIR AND FILES INCLUDED
+			       alias backup='cd /media/earth/backup-log'
+
+
+			     # BATTERY PERCENTAGE 
+			     alias y='upower -i $(upower -e | grep BAT) | grep --color=never -E "state|to\ full|to\ empty|percentage"' 
+
+		             # SWITCH TO GUI TERMINAL
+			     alias runD='sudo service lightdm start'
+
+
+			    # EXPLORE MOVIES AND TVSERIES
+			    alias movies='cd /media/earth/multimedia/moviesAndSeries/movies/'
+			    alias series='cd /media/earth/multimedia/moviesAndSeries/tvSeries/'
+			    alias nep1='cd /media/earth/songs/nepali/newNepali2014/'
+			    alias nep2='cd /media/earth/songs/nepali/mixies/'
+
+				
+			   # CHANGE DIRECTORIES SHORT CUTS
+			   alias one='cd ..'
+			   alias two='cd ../../'
+			   alias three='cd ../../../'
+			   alias four='cd ../../../../'
+
+				
+			#ECLIPSE STETUP -JAVA AND ANDROID
+			alias tmpEclipse='./eclipse'
+			alias eclipse='cd /media/earth/installers/adt/adt-bundle-linux-x86_64-20140702/eclipse && tmpEclipse &'
+		
+
+			# J2EE AND SPRING ECLIPSE-SETUP
+			alias spring='cd /opt/eclipse && tmpEclipse &'
+
+
+
+                        #NETBEANS SETUP
+			alias ntmp='./netbeans'
+			alias netbeans='cd ~/netbeans-8.0.2/bin && ntmp &'
+
+		
+                       #FIX BRIGHTNESS ISSUE IN XFCE4.12
+
+			     #MIN BRIGHTNESS
+			alias minone='xbacklight -10'
+			alias mintwo='xbacklight -20'
+                        alias minthree='xbacklight -30'
+			alias minfour='xbacklight -40'
+			alias minfive='xbacklight -50'
+			alias minsix='xbacklight -60'
+			alias minseven='xbacklight -70'
+			alias mineight='xbacklight -80'
+
+
+
+		            #MIN BRIGHTNESS
+                        alias maxone='xbacklight +10'
+                        alias maxtwo='xbacklight +20'
+                        alias maxthree='xbacklight +30'
+                        alias maxfour='xbacklight +40'
+                        alias maxfive='xbacklight +50'
+                        alias maxsix='xbacklight +60'
+                        alias maxseven='xbacklight +70'
+                        alias maxeight='xbacklight +80'
+
+
+
+			# LAUNCH GIT BASED PROMPT AND NORMAL PROMPT
+			alias gPrompt='source ~/.bash-powerline.sh'
+			alias nPrompt='source ~/.bin/dotFiles/bash/prompt'

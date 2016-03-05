@@ -1,0 +1,5 @@
+     #!/bin/bash
+        
+   totalNumber = cat /etc/passwd | wc -l 
+   echo -n "The total \no. of users logged into the system= $totalNumber"
+   

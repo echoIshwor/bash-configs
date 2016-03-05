@@ -1,0 +1,1 @@
+wget -O speedtest-cli http://goo.gl/aWPzQ3
