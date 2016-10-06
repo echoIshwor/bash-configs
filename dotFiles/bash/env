@@ -8,8 +8,9 @@
        #export LS_COLORS='ow=07;33:'
 
 
+
 	#SET DIFFERENT COLORS FOR DIFFERENT KIND OF FILES
-        alias ls='ls --color'
+	alias ls='ls --color'
         LS_COLORS='ow=4;93;40:di=1;31;47:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
         export LS_COLORS
 
@@ -34,24 +35,15 @@
 
 		                export CDPATH=$PATH:/media/earth/funPills/linux
 
-                                #   export CDPATH=$PATH:~/bin/dotFiles/bash/scripts/
-
-		#big data setup
-	export HADOOP_HOME=/opt/programs/hadoop-0.20.2-cdh3u6
-	export PATH=$PATH:$HADOOP_HOME/bin
-
-
-
 
 
 #####################SDK###########################
 export ANDROID_HOME=/media/earth/meroAndroidStudio/android-studio/
 export PATH=$PATH:$ANDROID_HOME/bin
 
-
-##################INTELLIJ IDEA####################
-export GRAILS_HOME=~/grails/
-export PATH="$PATH:$GRAILS_HOME/bin"
+############################################################################
+export SPRING_IDEA=/media/earth/backup/software/idea-IU-162.1447.26/
+export PATH=$PATH:$SPRING_IDEA/bin
 
 #####################GRADLE SETUP#################
 export GRADLE_HOME=/opt/gradle-2.10/

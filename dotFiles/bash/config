@@ -17,7 +17,7 @@
 		 if [ $hour -ge 0 -a $hour -lt 12 ]
 		 then
 		  # greet="Good Morning, Ishwor. Welcome back."
-		   fortune | cowsay -f tux
+		   fortune | lolcat| cowsay -f tux
 
 
 		 # if it is midafternoon to evening ( before 6 pm) will say G'noon
@@ -25,13 +25,13 @@
 		 then
 		  # greet="Good Afternoon, ISHWOR. Welcome back. "
 		 
-		    fortune | cowsay -f stimpy
+		    fortune | lolcat| cowsay -f stimpy
 
 		 else    
 		 # it is good evening till midnight
 		 # greet="Good Evening, ISHWOR. Welcome back."
 
-			    fortune | cowsay -f tux
+			    fortune | lolcat| cowsay -f tux
 		 fi
 
 		 

@@ -60,7 +60,7 @@
 			     alias y='upower -i $(upower -e | grep BAT) | grep --color=never -E "state|to\ full|to\ empty|percentage"' 
 
 		             # SWITCH TO GUI TERMINAL
-			     alias runD='sudo service lightdm start'
+			     alias startX='sudo service lightdm start'
 
 
 			    # EXPLORE MOVIES AND TVSERIES
@@ -75,6 +75,7 @@
 			   alias two='cd ../../'
 			   alias three='cd ../../../'
 			   alias four='cd ../../../../'
+			   alias five='cd ../../../../../'
 
 				
 			#ECLIPSE STETUP -JAVA AND ANDROID
