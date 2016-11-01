@@ -64,3 +64,7 @@ export PATH=$PATH:$CATALINA_HOME/bin
 ###################################### ADB SETUP ######################################################################
 export ADB_HOME=~/Android/Sdk/platform-tools
 export PATH=$PATH:$ADB_HOME
+
+############################################ Ngrok   #################################################################
+export NGROK_HOME=/opt/Ngrok/
+export PATH=$PATH:$NGROK_HOME
