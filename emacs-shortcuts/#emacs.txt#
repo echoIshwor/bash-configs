@@ -48,3 +48,4 @@ M-$		       Spell check
 M-x flyspell-mode      shows spellings errors while typing.
 M-x query-replace      replace a word with <--- space-bar/ y : yes, n:no --> 
 M-% query-replace      replace a word with <--- space-bar/ y : yes, n:no -->
+
