@@ -29,8 +29,10 @@ M-v Page down
 C-l Center the screen
 C-g g Goto line number
 
+
 C-x 2		 Split top/buttom
 C-x 0	         navigate between windows.
+C-x b		 switch to different buffer in same window.
 C-x 3 	 	 Split left/right
 C-x 1,C-x 0	 Remove all windows --simplify life
 
@@ -48,3 +50,14 @@ M-$		       Spell check
 M-x flyspell-mode      shows spellings errors while typing.
 M-x query-replace      replace a word with <--- space-bar/ y : yes, n:no --> 
 M-% query-replace      replace a word with <--- space-bar/ y : yes, n:no -->
+M-x replace-string     replace all words in a file with a string without confirmation.
+M-x shell	       open a bash commmand line
+M-u 		       upper case a word
+M-l		       lower case a word
+M-c		       capatilize a character.(upper case a character )
+M-x ispell-region      check spelling mistakes in selected area.
+M-x ispell-buffer      check spelling mistakes in whole buffer.
+M-x compile	       compile script such as .sh,py etc.
+C-x C-f 	       hit enter without typing anything <-- dir mode. press d to mark a file to delete, + to create a new directory etc,
+
+
