@@ -22,7 +22,7 @@ export PATH=$PATH:$MAVEN_HOME/bin
 
 ###################################### INTELLIJ IDEA  ######################################################################
 export IDEA_HOME=/opt/idea/
-export PATH=$PATH:$IDEA_HOME
+export PATH=$PATH:$IDEA_HOME/bin
 
 
 ################################# JAVA SET UP  ###########################################################
