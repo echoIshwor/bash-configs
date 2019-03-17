@@ -15,6 +15,15 @@ export LS_COLORS
 
 
 
+############################## LOCAL SCRIPT #############################################################
+export AUTO_SSH=/home/ishwor/.bin/emacs-shortcuts/auto-ssh
+export PATH=$PATH:$AUTO_SSH/
+
+
+
+
+
+
 ############################### MAVEN SET UP #####################################################################
 export MAVEN_HOME=/opt/apache-maven
 export PATH=$PATH:$MAVEN_HOME/bin
@@ -33,3 +42,5 @@ export PATH=$PATH:$JAVA_HOME/bin
 ############################################ Ngrok   #################################################################
 export NGROK_HOME=/opt/Ngrok/
 export PATH=$PATH:$NGROK_HOME
+
+
