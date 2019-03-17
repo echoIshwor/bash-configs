@@ -1,69 +1,34 @@
-     # Values used by other scripts and application.
-
-              
-       export PATH=$PATH:~/bin  # Adding ~/bin directory to PATH. DON'T EVER REMOVE THIS !!
+# Values used by other scripts and application.
 
 
-       #MOUNTED DIRECTORIES COLOR LISTING
-       #export LS_COLORS='ow=07;33:'
+export PATH=$PATH:~/bin  # Adding ~/bin directory to PATH. DON'T EVER REMOVE THIS !!
 
 
-
-	#SET DIFFERENT COLORS FOR DIFFERENT KIND OF FILES
-	alias ls='ls --color'
-        LS_COLORS='ow=4;93;40:di=1;31;47:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
-        export LS_COLORS
+#MOUNTED DIRECTORIES COLOR LISTING
+#export LS_COLORS='ow=07;33:'
 
 
-  
-                         
-			
-                           	#PERMANENT PATH SET UP FOR SCRIPTS I HAVE WRITTEN
+#SET DIFFERENT COLORS FOR DIFFERENT KIND OF FILES
+alias ls='ls --color'
+LS_COLORS='ow=4;93;40:di=1;31;47:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+export LS_COLORS
 
-				export PATH=$PATH:~/.bin/dotFiles/bash/scripts/selfWritten
-
-				export PATH=$PATH:~/.bin/dotFiles/bash/scripts/standard
-
-				export PATH=$PATH:~/.bin/dotFiles/bash/scripts/popups/
-                                
-                                export PATH=$PATH:/media/earth/installers/adt/android-studio/bin
-                               
-  
-
-
-				#PATH SET UP FOR DIRECTORIES I USE FREQUENTLY.
-
-		                export CDPATH=$PATH:/media/earth/funPills/linux
-
-
-
-#####################SDK###########################
-export ANDROID_HOME=/media/earth/meroAndroidStudio/android-studio/
-export PATH=$PATH:$ANDROID_HOME/bin
-
-############################################################################
-export SPRING_IDEA=/media/earth/backup/software/idea-IU-162.1447.26/
-export PATH=$PATH:$SPRING_IDEA/bin
-
-#####################GRADLE SETUP#################
-export GRADLE_HOME=/opt/gradle-2.10/
-export PATH=$PATH:$GRADLE_HOME/bin
-
-export GRADLE_OPTS=-Xmx1024m  ##Gradle can use 1 GB as maximum heap size to increase the performance of jvm startup.
 
 
 ############################### MAVEN SET UP #####################################################################
-export MAVEN_HOME=/opt/apache-maven-3.3.9/
+export MAVEN_HOME=/opt/apache-maven
 export PATH=$PATH:$MAVEN_HOME/bin
 
 
-################################## APACHE TOMCAT SERVER SETUP ###########################################################
-export CATALINA_HOME=/opt/apache-tomcat-8.0.30
-export PATH=$PATH:$CATALINA_HOME/bin
+###################################### INTELLIJ IDEA  ######################################################################
+export IDEA_HOME=/opt/idea/
+export PATH=$PATH:$IDEA_HOME
 
-###################################### ADB SETUP ######################################################################
-export ADB_HOME=~/Android/Sdk/platform-tools
-export PATH=$PATH:$ADB_HOME
+
+################################# JAVA SET UP  ###########################################################
+export JAVA_HOME=/opt/jdk8.1
+export PATH=$PATH:$JAVA_HOME/bin
+
 
 ############################################ Ngrok   #################################################################
 export NGROK_HOME=/opt/Ngrok/
