@@ -13,3 +13,4 @@
 
       . ~/.bin/dotFiles/bash/function
 
+      . ~/.bin/dotFiles/bash/git-prompt.sh
