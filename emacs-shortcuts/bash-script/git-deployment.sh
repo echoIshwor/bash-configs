@@ -94,8 +94,6 @@ function initScript(){
 
     echo -e "\n"
     
-    local branch_snapshot=`sh ~/Documents/bash-script/git-branch.sh`
-
     local branch_name=`echo $branch_snapshot | cut -d '@' -f 1 | tr a-z A-Z`
     local commit_hash=`echo $branch_snapshot | cut -d '@' -f 2`
     
@@ -132,7 +130,12 @@ function initScript(){
 }
 
 
-branch_snapshot=`sh ~/Documents/bash-script/git-branch.sh`
+
+script_location=$(dirname "$0")
+
+script_location+="$branch_snapshot/git-branch.sh"
+
+branch_snapshot=`sh "$script_location"`
 
 branch_name=`echo $branch_snapshot | cut -d '@' -f 1 | tr a-z A-Z`
 
@@ -141,13 +144,4 @@ is_valid_branch=$(BranchValidity "$branch_name")
 if (( $is_valid_branch == 0 )); then
     initScript
 fi
-
-
-
-
-
-
-
-
-
 
