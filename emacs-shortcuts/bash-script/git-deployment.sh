@@ -40,17 +40,13 @@ function deploy(){
     
     local project=$(basename `git rev-parse --show-toplevel | tr a-z A-Z`)
     
-    local most_recent_tag=$(git tag --merged=HEAD --list "DUMMY-*" | sort -r -n -k2 | sort -rn -t $'V' -k2,2 | head -n 1)
+    local most_recent_tag=$(git tag --merged=HEAD --list "$project-*" | sort -r -n -k2 | sort -rn -t $'V' -k2,2 | head -n 1)
     
     echo -e "\n[Git]: Snapshot: ${bold}$last_snapshot\033[00;32m \n"
     
-    IFS='- ' read -r -a array <<< "$most_recent_tag"
-
-    local version_pre=$(echo "${array[1]}" | awk -F'.' '{print $1}' | tr -dc '0-9')
-
-    echo "PRE: ${array[1]}"
+    local version_pre=$(echo "$most_recent_tag" |awk -F'-V' '{ print $NF }'|  awk -F'.' '{print $1}' | tr -dc '0-9')
     
-    local version_post=$(echo "${array[1]}" | awk -F'.' '{print $2}')
+    local version_post=$(echo "$most_recent_tag" | awk -F'-V' '{ print $NF }'|awk -F'.' '{print $2}'  | cut -d '-' -f 1)
 
     local current_date=$(date +"%Y-%m-%d")
 
