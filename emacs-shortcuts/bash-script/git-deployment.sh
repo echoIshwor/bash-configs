@@ -18,31 +18,6 @@ function TerminateWithMsg(){
     
 }
 
-function BranchValidity(){
-    
-    if [ "$1" != "MASTER" ]; then
-	
-     	echo -e "\nUnable to create a TAG ${ERROR}[✕]${PS1_COLOR}\n\n${ERROR}[error]${PS1_COLOR} Expected branch: ${BOLD}MASTER ${PS1_COLOR}, Found branch: ${BOLD}$1${PS1_COLOR}" >&2
-	
-	echo -e "\n${GRAY}[Do] ${BOLD}git checkout master ${PS1_COLOR}and re-run this script" >&2
-	
-     	TerminateWithMsg
-
-	echo 1;
-	exit;
-    fi
-
-    echo -e "\nOn a branch : ${BOLD}$1${PS1_COLOR} \n" >&2
-
-    echo -e "${GRAY}[git]${PS1_COLOR}: Branch verification success ${BOLD}[✓]${PS1_COLOR}\n" >&2
-    
-    echo 0
-}
-
-
-
-
-
 
 function deploy(){
 
@@ -107,17 +82,19 @@ function VerificationDetails(){
     
     local readonly commit_message=`echo $branch_snapshot | cut -d '@' -f 3`
 
-    echo -e "${GRAY}[verify]${PS1_COLOR}: details verification before we proceed \n"
+    echo -e "\n${GRAY}[verify]${PS1_COLOR}: details verification before we proceed \n"
+    echo -e "\e[4mRemote branch verification\e[0m"
+    echo -e "\n${GRAY}use branch${PS1_COLOR}           : ${BOLD}$branch${PS1_COLOR} \n"
+    echo -e "${GRAY}last commit snapshot${PS1_COLOR} : ${BOLD}$commit_hash${PS1_COLOR}\n"
+    echo -e "${GRAY}last commit message${PS1_COLOR}  : ${BOLD}$commit_message${PS1_COLOR} \n\n"
 
-    echo -e "${BOLD}======================================================${PS1_COLOR}"
-    
-    echo -e "\n${GRAY}branch${PS1_COLOR}   : ${BOLD}$branch${PS1_COLOR} \n"
 
-    echo -e "${GRAY}snapshot${PS1_COLOR} : ${BOLD}$commit_hash${PS1_COLOR}\n"
+    echo -e "\e[4mCheck-List verification\e[0m \n "
+    echo -e "${GRAY}using right data source ${PS1_COLOR}           : ${BOLD}??${PS1_COLOR} \n"
 
-    echo -e "${GRAY}message${PS1_COLOR}  : ${BOLD}$commit_message${PS1_COLOR} \n"
+    echo -e "${GRAY}all db script in place ${PS1_COLOR}            : ${BOLD}??${PS1_COLOR} \n"
 
-    echo -e "${BOLD}=======================================================${PS1_COLOR}\n"
+    echo -e "${GRAY}schema validation left on${PS1_COLOR}          : ${BOLD}??${PS1_COLOR} \n"
 
 }
 
@@ -175,15 +152,17 @@ function initScript(){
 
 script_location=$(dirname "$0")
 
-script_location="$script_location/git-branch.sh"
+script_location_branch="$script_location/git-branch.sh"
 
-branch_snapshot=`sh "$script_location"`
+script_location_reconcillation="$script_location/branch_reconcillation.sh"
+
+is_branch_valid="`sh $script_location_reconcillation`"
+
+branch_snapshot=`sh "$script_location_branch"`
 
 branch_name=`echo $branch_snapshot | cut -d '@' -f 1 | tr a-z A-Z`
 
-is_valid_branch=$(BranchValidity "$branch_name")
-
-if (( $is_valid_branch == 0 )); then
+if (( $is_branch_valid == 0 )); then
     
     VerificationDetails
     
