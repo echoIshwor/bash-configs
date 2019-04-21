@@ -19,7 +19,7 @@ function TerminateWithMsg(){
 }
 
 
-function deploy(){
+function CreateTAG(){
 
     #0 : new , 1: update , 2: hot
 
@@ -114,7 +114,7 @@ function UserIntraction(){
     done
 }
 
-function initScript(){
+function InitScript(){
 
     echo -e "\n"
     local PS3='Please enter your choice: '
@@ -124,17 +124,17 @@ function initScript(){
     do
 	case $opt in
             "New Deployment")
-		deploy "$commit_hash" 0 
+		CreateTAG  "$commit_hash" 0 
 		break
 		;;
 
 	    "Update TAG from last commit")
-		deploy  "$commit_hash" 1
+		CreateTAG "$commit_hash" 1
 		break
 		;;
 
 	    "Hot Fix")
-		deploy "$commit_hash" 2
+		CreateTAG "$commit_hash" 2
 		break
 		;;
 
@@ -170,7 +170,7 @@ if (( $is_branch_valid == 0 )); then
     
     if(( $should_proceed == 0 )); then
 	
-	initScript
+	InitScript
 	
     fi
 fi
