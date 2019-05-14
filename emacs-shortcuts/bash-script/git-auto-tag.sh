@@ -96,6 +96,8 @@ function VerificationDetails(){
 
     echo -e "${GRAY}schema validation left on${PS1_COLOR}          : ${BOLD}??${PS1_COLOR} \n"
 
+    echo -e "${GRAY} valid functionality code for new screens?     : ${BOLD}??${PS1_COLOR} \n"
+
 }
 
 

@@ -16,11 +16,11 @@ alias cls='clear && ls'
 
 
 # SHORT CUTS TO DOT FILES.
-alias en='sudo emacs ~/.bin/dotFiles/bash/env'
-alias fun='sudo emacs ~/.bin/dotFiles/bash/function'
-alias con='sudo emacs ~/.bin/dotFiles/bash/config'
-alias al='sudo emacs ~/.bin/dotFiles/bash/aliases'
-alias pr='sudo emacs ~/.bin/dotFiles/bash/prompt'
+alias en='sudo emacs -nw ~/.bin/dotFiles/bash/env'
+alias fun='sudo emacs -nw ~/.bin/dotFiles/bash/function'
+alias con='sudo emacs -nw ~/.bin/dotFiles/bash/config'
+alias al='sudo emacs -nw ~/.bin/dotFiles/bash/aliases'
+alias pr='sudo emacs -nw ~/.bin/dotFiles/bash/prompt'
 
 
 
@@ -61,4 +61,4 @@ alias maxsix='xbacklight +60'
 alias maxseven='xbacklight +70'
 alias maxeight='xbacklight +80'
 
-
+#alias parent="git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'"
