@@ -88,14 +88,13 @@ function VerificationDetails(){
     
     commit_hash=`echo $branch_snapshot | cut -d '@' -f 2`
     
-    local readonly commit_message=`echo $branch_snapshot | cut -d '@' -f 3`
+    local readonly commit_message=`echo $branch_snapshot | cut -d '@' -f3-`
 
     echo -e "\n${GRAY}[verify]${PS1_COLOR}: details verification before we proceed \n"
     echo -e "\e[4mRemote branch verification\e[0m"
-    echo -e "\n${GRAY}use branch${PS1_COLOR}           : ${BOLD}$branch${PS1_COLOR} \n"
-    echo -e "${GRAY}last commit snapshot${PS1_COLOR} : ${BOLD}$commit_hash${PS1_COLOR}\n"
-    echo -e "${GRAY}last commit message${PS1_COLOR}  : ${BOLD}$commit_message${PS1_COLOR} \n\n"
-
+    echo -e "\n${GRAY}CURRENT BRANCH${PS1_COLOR}             : ${BOLD}$branch${PS1_COLOR} \n"
+    echo -e "${GRAY}LATEST COMMIT${PS1_COLOR}              : ${BOLD}$commit_hash${PS1_COLOR}\n"
+    echo -e "${GRAY}LATEST MESSAGE${PS1_COLOR}             : ${BOLD}$commit_message${PS1_COLOR} \n\n"
 
     echo -e "\e[4mCheck-List verification\e[0m \n "
     echo -e "${GRAY}using right data source ${PS1_COLOR}           : ${BOLD}??${PS1_COLOR} \n"
@@ -180,7 +179,7 @@ if (( $is_branch_valid == 0 )); then
     
     if(( $should_proceed == 0 )); then
 	
-	InitScript
+    	InitScript
 	
     fi
 fi
