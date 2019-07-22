@@ -29,8 +29,15 @@ function CreateTAG(){
 
     local readonly project=$(basename `git rev-parse --show-toplevel | tr a-z A-Z`)
 
-    local readonly most_recent_tag=$(git tag --merged=HEAD --list "$project-*" | sort -r -n -k2 | sort -rn -t $'V' -k2,2 | head -n 1)
+    local latest_version=$(git tag --merged=HEAD --list "$project-*" | cut -d '-' -f 3,4,5,6 | cut -c2- | sort -nr | head -n 1)
+    latest_version="V$latest_version"
 
+    local readonly most_recent_tag="$project-$latest_version"
+
+    #    most_recent_tag=$(git tag --merged=HEAD --list "$project-*" | sort -r -t "-"  -k 4 | awk -F "-" -v name="$username" '$3=="V13.0" { print $0 }' | head -n 1)
+
+    echo "LATEST TAG:  $most_recent_tag"
+    
     echo -e "${GRAY}[git]${PS1_COLOR} creating a tag on snapshot: ${BOLD}$last_snapshot${PS1_COLOR} ...\n"
 
     local version_pre=$(echo "$most_recent_tag" |awk -F'-V' '{ print $NF }'|  awk -F'.' '{print $1}' | tr -dc '0-9')
@@ -40,10 +47,10 @@ function CreateTAG(){
     local readonly current_date=$(date +"%Y-%m-%d")
 
     if (( $deployment_type == 0)) ; then
-	((version_pre++));
-	version_post=0
+    	((version_pre++));
+    	version_post=0
     elif (( $deployment_type == 2 )) ; then
-	((version_post++));
+    	((version_post++));
 
     fi
 
@@ -53,13 +60,13 @@ function CreateTAG(){
     local commit_message="V$version_pre.$version_post-$current_date release"
 
     if (( $deployment_type == 1 )) ; then
-	git tag -a "$tag_label" "$last_snapshot" -m "$commit_message" 2> /dev/null
-	if (( $? != 0 )); then
-	    echo -e "${GRAY}[warning]${PS1_COLOR} tag $tag_label already exists. Force updating ...\n"
-	    git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
-	fi
+    	git tag -a "$tag_label" "$last_snapshot" -m "$commit_message" 2> /dev/null
+    	if (( $? != 0 )); then
+    	    echo -e "${GRAY}[warning]${PS1_COLOR} tag $tag_label already exists. Force updating ...\n"
+    	    git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
+    	fi
     else
-	git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
+    	git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
 
     fi
 
@@ -72,6 +79,7 @@ function CreateTAG(){
 
     echo  -e "${BOLD}[before]${PS1_COLOR} : $most_recent_tag\n${FINISHED}[after]${PS1_COLOR}  : $tag_label\n"
 
+    
 }
 
 function VerificationDetails(){
