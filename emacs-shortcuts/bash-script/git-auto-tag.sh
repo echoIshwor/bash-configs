@@ -42,42 +42,64 @@ function CreateTAG(){
 
     local version_pre=$(echo "$most_recent_tag" |awk -F'-V' '{ print $NF }'|  awk -F'.' '{print $1}' | tr -dc '0-9')
 
-    local version_post=$(echo "$most_recent_tag" | awk -F'-V' '{ print $NF }'|awk -F'.' '{print $2}'  | cut -d '-' -f 1)
+    local version_middle=$(echo "$most_recent_tag" | awk -F'-V' '{ print $NF }'|awk -F'.' '{print $3}' | cut -c1-1 )
 
+    local version_post=$(echo "$most_recent_tag" | awk -F'-V' '{ print $NF }'|awk -F'.' '{print $2}'  | cut -d '-' -f 2)
+    
     local readonly current_date=$(date +"%Y-%m-%d")
 
-    if (( $deployment_type == 0)) ; then
-    	((version_pre++));
-    	version_post=0
-    elif (( $deployment_type == 2 )) ; then
-    	((version_post++));
+    if (( $deployment_type == 0)) ; then #Majro Release
+	
+	((version_pre++));
+    	version_middle=1;
+    	version_post=0;
+	
+    elif (( $deployment_type == 1 )) ; then  #Normal Deployment
+	
+    	((version_middle++));
+	version_post=0;
 
-    fi
 
+    elif (( $deployment_type == 2 )); then
 
-    local tag_label="$project-V$version_pre.$version_post-$current_date"
+	((version_post++));
 
-    local commit_message="V$version_pre.$version_post-$current_date release"
-
-    if (( $deployment_type == 1 )) ; then
-    	git tag -a "$tag_label" "$last_snapshot" -m "$commit_message" 2> /dev/null
-    	if (( $? != 0 )); then
-    	    echo -e "${GRAY}[warning]${PS1_COLOR} tag $tag_label already exists. Force updating ...\n"
-    	    git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
-    	fi
+    elif (( $deployment_type == 3 )); then
+	
+	echo "updating a tag ..."
+	
     else
-    	git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
-
+	echo "Unknown parameter"
     fi
 
 
-    git tag -fa latest  "$last_snapshot" -m "$commit_message"
+    local readonly release_note_format="V$version_pre.$version_middle.$version_post-$current_date"
+    
+    local readonly tag_label="$project-$release_note_format"
 
-    git push --tags origin master --force
+    local commit_message="$release_note_format release"
 
-    echo -e "\n${GRAY}[new tag]${PS1_COLOR}: ${BOLD}$tag_label${PS1_COLOR}\n"
+    echo "tag_label : commit_message  = $tag_label : $commit_message"
 
-    echo  -e "${BOLD}[before]${PS1_COLOR} : $most_recent_tag\n${FINISHED}[after]${PS1_COLOR}  : $tag_label\n"
+    # if (( $deployment_type == 1 )) ; then
+    # 	git tag -a "$tag_label" "$last_snapshot" -m "$commit_message" 2> /dev/null
+    # 	if (( $? != 0 )); then
+    # 	    echo -e "${GRAY}[warning]${PS1_COLOR} tag $tag_label already exists. Force updating ...\n"
+    # 	    git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
+    # 	fi
+    # else
+    # 	git tag -af "$tag_label" "$last_snapshot" -m "$commit_message" 
+
+    # fi
+
+
+    # git tag -fa latest  "$last_snapshot" -m "$commit_message"
+
+    # git push --tags origin master --force
+
+    # echo -e "\n${GRAY}[new tag]${PS1_COLOR}: ${BOLD}$tag_label${PS1_COLOR}\n"
+
+    # echo  -e "${BOLD}[before]${PS1_COLOR} : $most_recent_tag\n${FINISHED}[after]${PS1_COLOR}  : $tag_label\n"
 
     
 }
@@ -128,17 +150,18 @@ function InitScript(){
     echo -e "\n"
     local PS3='Please enter your choice: '
 
-    local readonly options=("New Deployment" "Update TAG from last commit" "Hot Fix" "Quit")
+    local readonly options=("Major Release" "Normal Deployment" "Hot Fix" "Tag Update" "Tag Delete" "Quit")
     select opt in "${options[@]}"
     do
 	case $opt in
-            "New Deployment")
+
+	    "Major Release")
 		CreateTAG  "$commit_hash" 0 
 		break
 		;;
 
-	    "Update TAG from last commit")
-		CreateTAG "$commit_hash" 1
+            "Normal Deployment")
+		CreateTAG  "$commit_hash" 1 
 		break
 		;;
 
@@ -147,6 +170,35 @@ function InitScript(){
 		break
 		;;
 
+	    "Tag Update")
+		CreateTAG "$commit_hash" 3
+		break
+		;;
+
+	    "Tag Delete")
+
+		git fetch --tags
+
+		echo -e  "\n Enter a valid TAG name from the list to delete. \n"
+		git tag -l
+
+		echo -e "\n"
+		read tag_name
+		
+                if [ $(git tag -l "$tag_name") ]; then
+		    
+		    echo -e "${GRAY} Deleting a tag $tag_name from both remote and local ... ${PS1_COLOR}";
+		    git push --delete origin "$tag_name"
+		    git tag -d "$tag_name"
+		    echo -e "${GRAY} Deleted Tag : $tag_name${PS1_COLOR}"
+		    exit 1;
+
+		fi
+		
+		break
+		;;
+
+	    
 	    "Quit")
 		break
 		;;
